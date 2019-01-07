@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<title>Loja-Virtual</title>
+</head>
+<body>
+	<div th:replace="/fragments/header :: header"></div>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h2>Cadastro</h2>
+		</div>
+
+		<div class="ml-auto col-6 mr-auto">
+			<h3 class="text-center m-1">Create a new account</h3>
+			<form action="#" th:action="@{/signin}" th:object="${user}" method="POST">
+				<input type="hidden" th:field="*{id}">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">Name</span>
+					</div>
+					<input th:field="*{name}" type="text" class="form-control" placeholder="Name"
+						aria-label="Name" aria-describedby="basic-addon1">
+				</div>
+				<div class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">Email</span>
+					</div>
+					<input th:field="*{email}" type="email" class="form-control" placeholder="Email"
+						aria-label="Email" aria-describedby="basic-addon1">
+				</div>
+				<div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">Username</span>
+					</div>
+					<input th:field="*{username}" type="text" class="form-control" placeholder="Username"
+						aria-label="Username" aria-describedby="basic-addon1">
+				</div>
+				<div class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">Password</span>
+					</div>
+					<input th:field="*{password}" type="password" class="form-control" placeholder="Password"
+						aria-label="Password" aria-describedby="basic-addon1">
+				</div>
+				<div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+				<button type="submit" class="btn btn-block btn-dark">Sign In</button>
+			</form>
+			<pre th:text="${user}"></pre>
+		</div>
+	</div>
+
+	<div th:replace="/fragments/footer :: footer"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

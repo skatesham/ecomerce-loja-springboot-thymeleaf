@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<title>Loja-Virtual</title>
+</head>
+<body>
+	<div th:replace="/fragments/header :: header"></div>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h2>Bem vindo a Loja Virtual</h2>
+			<p>Aqui voce pode cadastrar-se e comprar</p>
+		</div>
+	</div>
+
+	<div th:replace="/fragments/footer :: footer"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
