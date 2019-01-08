@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html>
+
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<title>Loja-Virtual</title>
 </head>
 <body>
+	<div th:replace="/fragments/header :: header"></div>
 
+	<div class="container">
+		<div class="jumbotron">
+			<h2 th:text="#{login.title}"></h2>
+		</div>
+
+		<div class=" mr-auto ml-auto col-6">
+			<form action="#" th:action="@{/login}" th:object="${loginDTO}"
+				method="POST">
+				<h4 class="text-center" th:text="#{login.desc}"></h4>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1" th:text="#{field.username}"></span>
+					</div>
+					<input th:field="*{username}" type="text" class="form-control"
+						th:placeholder="#{field.username}">
+				</div>
+				<div class="alert alert-danger"
+					th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1" th:text="#{field.password}"></span>
+					</div>
+					<input th:field="*{password}" type="password" class="form-control"
+						th:placeholder="#{field.password}">
+				</div>
+				<div class="alert alert-danger"
+					th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+				<ul>
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+				</ul>
+				<div th:if="${error}" class="alert alert-danger">Email ou Senha incorretos.</div>
+				<pre th:text="${error}"></pre>
+				<button type="submit" class="btn btn-block" th:text="#{field.login}"></button>
+			</form>
+		</div>
+
+	</div>
+
+	<div th:replace="/fragments/footer :: footer"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

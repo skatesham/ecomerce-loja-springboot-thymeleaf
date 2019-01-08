@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<title>Loja-Virtual</title>
+</head>
+<body>
+	<div th:replace="/fragments/header :: header"></div>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h2 th:text="#{products.title}"></h2>
+			<p th:text="#{products.desc}"></p>
+		</div>
+
+		<div class="fluid-container">
+			<div class="row">
+				<div class="col-4 text-center bg-light p-2" th:each="product : ${products}">
+					<div class="col">
+						<img height="100" width="100" alt="product.name"
+							src="https://www.frpromotora.com/images123/produtos.png">
+					</div>
+					<div class="col">
+						<p>Nome: <span th:text="${product.name}"></span> </p>
+						<p>Descrição: <span th:text="${product.description}"></span></p>
+						<p>Preço R$ <span th:text="${product.price.value}"></span></p>
+						<button class="btn btn-block" th:text="#{products.buy}"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div th:replace="/fragments/footer :: footer"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -11,15 +11,15 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			<h2>Usuarios</h2>
+			<h2 th:text="#{users.title}"></h2>
 		</div>
 
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Nome</th>
-					<th>Email</th>
-					<th>Username</th>
+					<th th:text="#{field.name}"></th>
+					<th th:text="#{field.email}"></th>
+					<th th:text="#{field.username}"></th>
 				</tr>
 			</thead>
 			<tbody>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<title>Loja-Virtual</title>
+</head>
+<body>
+	<div th:replace="/fragments/header :: header"></div>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h2 th:text="#{product.add.title}"></h2>
+			<p th:text="#{product.add.info}"></p>
+		</div>
+
+		<div class="mr-auto ml-auto col-6">
+			<h3 class="text-center">Novo Produto</h3>
+			<form action="#" th:action="@{/products/add}" th:object="${product}"
+				method="POST">
+				<input th:fields="*{id}" type="hidden"> <input
+					th:fields="*{imagePath}" type="hidden">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">Nome do Produto</span>
+					</div>
+					<input th:field="*{name}" type="text" class="form-control"  placeholder="Name"
+						aria-label="Name" aria-describedby="basic-addon1">
+				</div>
+				<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+					class="alert alert-danger"></div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">Descrição</span>
+					</div>
+					<input th:field="*{description}" placeholder="Descrição"
+						class="form-control">
+				</div>
+				<div th:if="${#fields.hasErrors('description')}"
+					th:errors="*{description}" class="alert alert-danger"></div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">Preço</span>
+					</div>
+					<input th:field="*{price.value}" placeholder="Preço"
+						class="form-control">
+				</div>
+				<div th:if="${#fields.hasErrors('price.value')}"
+					th:errors="*{price.value}" class="alert alert-danger"></div>
+				<button type="submit" class="btn btn-block">Criar novo
+					Produto</button>
+			</form>
+		</div>
+
+	</div>
+
+	<div th:replace="/fragments/footer :: footer"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

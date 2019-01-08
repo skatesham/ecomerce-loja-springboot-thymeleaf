@@ -9,9 +9,11 @@ import org.springframework.security.core.GrantedAuthority;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 @Entity(name = "role")
 public class Role implements GrantedAuthority {

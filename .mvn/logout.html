@@ -11,10 +11,17 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			<h2 th:text="#{home.title}"></h2>
-			<p th:text="#{home.desc}"></p>
+			<h2>Logout</h2>
 		</div>
-		<!--  <pre th:text="${principal}"></pre> --> 
+
+		<div class=" mr-auto ml-auto col-6">
+			<form action="#" th:action="@{/logout}"
+				method="POST">
+				<h4 class="text-center">Are you sure?</h4>
+				<button type="submit" class="btn btn-block">Logout</button>
+			</form>
+		</div>
+
 	</div>
 
 	<div th:replace="/fragments/footer :: footer"></div>
