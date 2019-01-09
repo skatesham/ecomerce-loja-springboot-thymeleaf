@@ -1,0 +1,5 @@
+{
+  "name": "Loja E-Comerce com Spring Boot",
+  "description": "Sistema com Spring Boot e com diversas funcionalidade",
+  "addons": [ "heroku-postgresql" ]
+}

