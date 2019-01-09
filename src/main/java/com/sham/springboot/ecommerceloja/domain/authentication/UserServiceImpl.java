@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,6 +28,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	@Transactional
+	@CacheEvict(value="users", allEntries=true)
 	public User create(User user, RoleEnum roleEnum) {
 		Optional<Role> role = roleRepository.findById(roleEnum.name());
 		if(role.isPresent()) {
@@ -39,21 +42,27 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return userRepository.save(user);
 	}
 
+	@Transactional
 	@Override
 	public User findByUsername(String username) {
 		return userRepository.findByUsername(username).get();
 	}
-
+	
+	@Transactional
 	@Override
+	@Cacheable("users")
 	public Iterable<User> findAll() {
 		return userRepository.findAll();
 	}
 
+	@Transactional
 	@Override
+	@CacheEvict(value="users", allEntries=true)
 	public User update(User user) {
 		return userRepository.save(user);
 	}
 
+	@Transactional
 	@Override
 	public void delete(User user) {
 		userRepository.delete(user);

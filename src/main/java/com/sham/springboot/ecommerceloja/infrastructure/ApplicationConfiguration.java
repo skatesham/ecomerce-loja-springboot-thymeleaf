@@ -57,8 +57,4 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
 		return validator;
 	}
 	
-	
-
-	
-	
 }

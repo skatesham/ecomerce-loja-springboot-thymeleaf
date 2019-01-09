@@ -15,13 +15,13 @@ import com.sham.springboot.ecommerceloja.domain.products.ProductService;
 
 @Controller()
 @RequestMapping("/products")
-public class ProdutosController {
+public class ProductsController {
 
 	@Autowired
 	ProductService productService;
 
 	@GetMapping()
-	public String verProdutos(Model model) {
+	public String findProducts(Model model) {
 
 		Iterable<Product> products = productService.findAll();
 		model.addAttribute("products", products);
@@ -30,12 +30,12 @@ public class ProdutosController {
 	}
 
 	@GetMapping("add")
-	public String adicionar(Product produto) {
+	public String add(Product produto) {
 		return "addProduct";
 	}
 
 	@PostMapping("add")
-	public String salvar(@Valid Product product, BindingResult bindingResult) {
+	public String save(@Valid Product product, BindingResult bindingResult) {
 
 		System.out.println(product);
 		if (bindingResult.hasErrors()) {

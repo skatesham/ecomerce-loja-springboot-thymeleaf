@@ -53,7 +53,7 @@
 						th:href="@{signin}" th:text="#{authentication.signin}"></a></li>
 					<li sec:authorize="isAuthenticated()" class="nav-item"><a
 						class="nav-link text-dark btn btn-danger ml-1"
-						th:href="@{logout} " th:text="#{authentication.logout}"></a></li>
+						th:href="@{/logout} " th:text="#{authentication.logout}"></a></li>
 				</ul>
 			</div>
 		</nav>

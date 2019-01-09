@@ -4,12 +4,12 @@ import java.util.Optional;
 
 public interface ProductService {
 
-	public Iterable<Product> findAll();
+	Iterable<Product> findAll();
 	
-	public Optional<Product> findBydId(Long id);
+	Optional<Product> findBydId(Long id);
 	
-	public Product create(Product product);
+	Product create(Product product);
 	
-	public void remove(Product product);
+	void remove(Product product);
 	
 }
