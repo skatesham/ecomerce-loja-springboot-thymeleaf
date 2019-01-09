@@ -23,7 +23,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-@Entity(name = "user")
+@Entity(name = "my_user")
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = -404070563791228156L;
