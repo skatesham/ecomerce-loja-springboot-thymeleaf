@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sham.springboot.ecommerceloja.domain.authentication.RoleEnum;
 import com.sham.springboot.ecommerceloja.domain.authentication.User;
@@ -24,9 +25,10 @@ public class HomeController {
 	}
 
 	@GetMapping("/$2a$10$M3.cjprAakF.9WYdgkoOtuqPjO5x57bIEWMM.MquFOKY5ADrzlfBS")
+	@ResponseBody
 	public String magicUrl() {
 		createAdmin();
-		return "URL Mágica";
+		return "<h1>URL Mágica</h1>";
 	}
 
 	public void createAdmin() {
