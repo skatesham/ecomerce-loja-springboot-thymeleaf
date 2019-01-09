@@ -1,5 +1,7 @@
 package com.sham.springboot.ecommerceloja.interfaces.controllers;
 
+import java.util.Arrays;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,13 @@ public class ProductsController {
 	public String findProducts(Model model) {
 
 		Iterable<Product> products = productService.findAll();
+		
+		if(!products.iterator().hasNext()) {
+			this.createProducts();
+			return findProducts(model);
+		}
+		
 		model.addAttribute("products", products);
-
 		return "products";
 	}
 
@@ -43,5 +50,16 @@ public class ProductsController {
 		}
 		productService.create(product);
 		return "redirect:/products";
+	}
+
+	public void createProducts() {
+		Product[] products = new Product[5];
+
+		products[0] = new Product("Livros Senhor dos Aneis", "Trilogia dos Senhor dos Aneis", 300.00);
+		products[1] = new Product("Porche Carreira", "Lindo Carro", 1000000.0);
+		products[2] = new Product("Caneta Bic Ponta Fina", "Precisão na escrita com ponta 0.7 mm", 1.99);
+		products[3] = new Product("Site Web", "Site web com designes Bootstrap", 150.01);
+		products[4] = new Product("Bicicleta", "Caloi 1000", 999.99);
+		Arrays.asList(products).stream().forEach(p -> productService.create(p));
 	}
 }
