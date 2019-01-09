@@ -32,12 +32,7 @@ public class AuthenticationController {
 		if (bindingResult.hasErrors()) {
 			return "signin";
 		}
-		try {
-			user = userService.create(user, RoleEnum.ROLE_USER);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "signin";
-		}
+		user = userService.create(user, RoleEnum.ROLE_USER);
 		return "redirect:/login";
 	}
 
